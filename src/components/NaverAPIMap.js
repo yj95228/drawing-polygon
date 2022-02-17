@@ -7,14 +7,6 @@ const {
 } = require("react-naver-maps");
 
 export const NaverAPIMap = ({ polygon }) => {
-  // const geoArray = polygon[0]
-  //   ? polygon.map((geoPoints) => {
-  //       const geoPoint = geoPoints.trim().split(" ");
-  //       return geoPoint[0].length === 2
-  //         ? { lng: geoPoint[0], lat: geoPoint[1] }
-  //         : [];
-  //     })
-  //   : [];
   const geoArray = polygon.map((geoPoints) => {
     const geoPoint = geoPoints.trim().split(" ");
     return { lng: geoPoint[0], lat: geoPoint[1] };
