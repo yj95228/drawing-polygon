@@ -7,11 +7,15 @@ function MapContainer() {
   const [polygon, setPolygon] = useState([]);
   const regex = /[^0-9\.\s,]/g;
   const transform = (polygon) => {
-    setPolygon(polygon.replace(regex, "").split(","));
+    if (polygon) {
+      setPolygon(polygon.replace(regex, "").split(","));
+    }
   };
   return (
-    <div className={"outline"}>
+    <div className={("outline", styles.outline)}>
       <div className={("container", styles.container)}>
+        <h1 className={styles.h1}>Drawing Polygon</h1>
+        <hr className={styles.hr} />
         <PolygonInput propFunction={transform} />
         <NaverApiMap polygon={polygon} />
         <div className={"map"}></div>

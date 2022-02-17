@@ -3,17 +3,35 @@
   width: 100%;
   margin: 10px;
   justify-content: space-between;
+  align-items: center;
 }
 .input {
   display: inline;
-  font-family: system-ui;
+  font-family: "Nanum Gothic", sans-serif;
   width: 90%;
-  height: 100px;
+  height: 80px;
+  margin: 0px 10px 10px 0px;
   padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f8f8f8;
   word-wrap: break-word;
   word-break: break-word;
 }
 .button {
   display: inline;
-  width: 10%;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 50px;
+  background-color: #40a6fd;
+  color: #fff;
+  box-shadow: 0 1px 4px 2px rgba(0, 0, 0, 0.1),
+    0 -1px 10px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.button:hover {
+  background-color: dodgerblue;
 }
