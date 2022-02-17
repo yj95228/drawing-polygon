@@ -7,12 +7,10 @@ const {
 } = require("react-naver-maps");
 
 export const NaverAPIMap = ({ polygon }) => {
-  const geoArray = polygon.map((geoPoint) => geoPoint.split(" "));
-  const geoDict = geoArray.map((geoPoint) => ({
-    lng: geoPoint[0],
-    lat: geoPoint[1],
-  }));
-
+  const geoArray = polygon.map((geoPoints) => {
+    const geoPoint = geoPoints.trim().split(" ");
+    return { lng: geoPoint[0], lat: geoPoint[1] };
+  });
   return (
     <RenderAfterNavermapsLoaded clientId={"jqe51ds7wm"}>
       <NaverMap
@@ -21,11 +19,11 @@ export const NaverAPIMap = ({ polygon }) => {
           width: "100%",
           height: "400px",
         }}
-        center={geoDict[0]}
+        center={geoArray[0]}
         zoom={13}
       >
         <Polygon
-          paths={[geoDict]}
+          paths={[geoArray]}
           fillColor={"#ff0000"}
           fillOpacity={0.3}
           strokeColor={"#ff0000"}

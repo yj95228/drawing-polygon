@@ -4,10 +4,10 @@ import NaverApiMap from "./NaverAPIMap.js";
 import styles from "./MapContainer.module.css";
 
 function MapContainer() {
-  const [polygon, setPolygon] = useState("");
+  const [polygon, setPolygon] = useState([]);
   const regex = /[^0-9\.\s,]/g;
   const transform = (polygon) => {
-    setPolygon(polygon.replace(regex, "").split(", "));
+    setPolygon(polygon.replace(regex, "").split(","));
   };
   return (
     <div className={"outline"}>
