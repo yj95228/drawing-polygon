@@ -1,14 +1,9 @@
-import NaverApiMap from "./NaverAPIMap.js";
+import MapContainer from "./components/MapContainer.js";
 
 function App() {
   return (
     <div className="App">
-      <div className={"outline"}>
-        <div className={"container"}>
-          <NaverApiMap />
-          <div className={"map"}></div>
-        </div>
-      </div>
+      <MapContainer />
     </div>
   );
 }

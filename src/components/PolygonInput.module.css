@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  width: 100%;
+  margin: 10px;
+  justify-content: space-between;
+}
+.input {
+  display: inline;
+  font-family: system-ui;
+  width: 90%;
+  height: 100px;
+  padding: 10px;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+.button {
+  display: inline;
+  width: 10%;
+}
