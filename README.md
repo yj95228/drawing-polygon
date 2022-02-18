@@ -1,3 +1,3 @@
 # Drawing Polygon
 
-polygon 좌표값을 입력하면 폴리곤을 지도 상에 그려줍니다.
+폴리곤 GeoJSON값을 입력하면 지도 상에 폴리곤을 그려줍니다
