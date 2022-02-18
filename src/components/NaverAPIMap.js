@@ -17,12 +17,12 @@ export const NaverAPIMap = ({ polygon }) => {
         id="maps-examples-polygon"
         style={{
           width: "100%",
-          height: "400px",
+          height: "70vh",
           marginLeft: "20px",
           marginRight: "20px",
         }}
         center={geoArray[0]}
-        zoom={13}
+        zoom={14}
       >
         <Polygon
           paths={[geoArray]}
