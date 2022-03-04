@@ -3,6 +3,7 @@ import styles from "./PolygonInput.module.css";
 
 function PolygonInput(props) {
   const [polygon, setPolygon] = useState("");
+  const polygonChange = (event) => setPolygon(event.target.value);
   const polygonKeyDown = (event) => {
     setPolygon(event.target.value);
     if (event.key === "Enter") {
@@ -13,10 +14,15 @@ function PolygonInput(props) {
     event.preventDefault();
     props.propFunction(polygon);
   };
+  const resetPolygon = (event) => {
+    setPolygon("");
+    props.propFunction(polygon);
+  };
   return (
     <form onSubmit={submitPolygon} className={styles.container}>
       <textarea
         className={styles.input}
+        onChange={polygonChange}
         onKeyDown={polygonKeyDown}
         placeholder="WKT(경도 위도의 순서) 형식으로 쉼표로 구분하여 적어주세요&#13;&#10;.&#13;&#10;
         ex) POLYGON((126.88629117743575 37.509014447622896, 126.89022728765188 37.50573926721649, 126.89309905739181 37.50721530335715, 126.89013312271457 37.511438814295325, 126.88629117743575 37.509014447622896))"
@@ -28,7 +34,7 @@ function PolygonInput(props) {
           onClick={submitPolygon}
           className={`${styles.button} ${styles.submit}`}
         />
-        {/* <button className={styles.button}>RESET</button> */}
+        <input type="reset" className={styles.button} onClick={resetPolygon} />
       </div>
     </form>
   );

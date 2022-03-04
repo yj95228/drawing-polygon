@@ -22,7 +22,7 @@ export const NaverAPIMap = ({ polygon }) => {
           marginRight: "20px",
         }}
         center={geoArray[0]}
-        zoom={15}
+        zoom={16}
       >
         <Polygon
           paths={[geoArray]}
