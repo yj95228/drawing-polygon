@@ -7,6 +7,7 @@ function MapContainer() {
   const [polygon, setPolygon] = useState([]);
   const regex = /[^0-9\.\s,]/g;
   const transform = (polygon) => {
+    console.log("set", polygon);
     if (polygon) {
       setPolygon(polygon.replace(regex, "").split(","));
     }
