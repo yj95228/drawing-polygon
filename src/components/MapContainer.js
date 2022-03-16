@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PolygonInput from "./PolygonInput.js";
 import NaverApiMap from "./NaverAPIMap.js";
 import styles from "./MapContainer.module.css";
@@ -14,7 +14,7 @@ function MapContainer() {
     }
     else {
       console.log(option,polygon);
-      if(polygon) {console.log(...JSON.parse(polygon).coordinates); setPolygon(...JSON.parse(polygon).coordinates);}
+      if(polygon) setPolygon(...JSON.parse(polygon).coordinates)
     }
   }
   return (
