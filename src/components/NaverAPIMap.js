@@ -22,7 +22,7 @@ export const NaverAPIMap = ({ option, polygon }) => {
         id="maps-examples-polygon"
         style={{
           width: "100%",
-          height: "70vh",
+          height: "65vh",
           marginLeft: "20px",
           marginRight: "20px",
         }}
