@@ -1,3 +1,18 @@
+.options {
+  color: royalblue;
+  font-family: 'Fredoka', sans-serif;
+}
+.option {
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.option:hover {
+  font-weight: 600;
+}
+.target {
+  font-weight: 600;
+}
 .container {
   display: flex;
   width: 100%;
