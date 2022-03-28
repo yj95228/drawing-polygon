@@ -1,71 +1,71 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
 }
 .menu {
-  text-decoration: none;
-  padding-right: 150px;
-  font-size: 20px;
-  font-family: "Mochiy Pop P One", sans-serif;
-  color: dodgerblue;
-  opacity: 50%;
+	text-decoration: none;
+	padding-right: 150px;
+	font-size: 20px;
+	font-family: 'Mochiy Pop P One', sans-serif;
+	color: dodgerblue;
+	opacity: 50%;
 }
 .h1 {
-  margin: 1px;
-  font-family: "Mochiy Pop P One", sans-serif;
-  font-weight: 100;
-  color: #40a6fd;
+	margin: 1px;
+	font-family: 'Mochiy Pop P One', sans-serif;
+	font-weight: 100;
+	color: #40a6fd;
 }
 .hr {
-  width: 20em;
-  border-color: rgba(64, 166, 253, 0.3);
-  margin-bottom: 20px;
+	width: 20em;
+	border-color: rgba(64, 166, 253, 0.3);
+	margin-bottom: 20px;
 }
 .textContainer {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
 }
 .result {
-  display: inline;
-  font-family: "Fredoka", sans-serif;
-  width: 100%;
-  /* width: 90%; */
-  height: 80px;
-  margin: 0px 10px 10px 0px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f8f8f8;
-  resize: none;
-  word-wrap: break-word;
-  word-break: break-word;
+	display: inline;
+	font-family: 'Fredoka', sans-serif;
+	width: 100%;
+	/* width: 90%; */
+	height: 80px;
+	margin: 0px 10px 10px 0px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #f8f8f8;
+	resize: none;
+	word-wrap: break-word;
+	word-break: break-word;
 }
 .buttons {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 .button {
-  display: inline;
-  width: 100px;
-  height: 45px;
-  font-size: 16px;
-  margin-bottom: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #40a6fd;
-  color: #fff;
-  cursor: pointer;
-  text-align: center;
+	display: inline;
+	width: 100px;
+	height: 45px;
+	font-size: 16px;
+	margin-bottom: 10px;
+	border: none;
+	border-radius: 5px;
+	background-color: #40a6fd;
+	color: #fff;
+	cursor: pointer;
+	text-align: center;
 }
 .button:hover {
-  background-color: dodgerblue;
+	background-color: dodgerblue;
 }
 .complete {
-  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
 }
