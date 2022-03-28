@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import styles from "./PolygonInput.module.css";
+import styles from "./InputPolygon.module.css";
 
-function PolygonInput(props) {
+function InputPolygon(props) {
   const [polygon, setPolygon] = useState("");
   const [option, setOption] = useState('WKT');
   const selectWKT = () => {
@@ -79,4 +79,4 @@ function PolygonInput(props) {
   );
 }
 
-export default PolygonInput;
+export default InputPolygon;

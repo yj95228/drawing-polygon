@@ -7,7 +7,7 @@ const {
   Polygon,
 } = require("react-naver-maps");
 
-export default function MarkerContainer() {
+export default function MakePolygon() {
   const navermaps = window.naver.maps;
 
   const [marker, setMarker] = useState([]);
