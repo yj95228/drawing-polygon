@@ -19,17 +19,20 @@ export default function MakePolygon() {
 	// const resetPolygon = () => getPolygon('')
 	return (
 		<div className={styles.container}>
-			<Link to='/' className={styles.menu}>
-				🔄 Drawing
-			</Link>
-			<h1 className={styles.h1}>Making Polygon</h1>
-			<hr className={styles.hr} />
+			<nav className={styles.menus}>
+				<Link to='/' className={styles.menu}>
+					폴리곤 그리기
+				</Link>
+				<Link to='make-polygon' className={`${styles.menu} ${styles.target}`}>
+					폴리곤 만들기
+				</Link>
+			</nav>
 			<div className={styles.textContainer}>
 				<textarea
 					disabled
 					className={styles.result}
 					value={polygon && `POLYGON((${polygon.slice(2)}))`}
-					placeholder='지도 상에 폴리곤을 그려주세요'
+					placeholder='지도 상에 원하는 지점을 클릭하여 폴리곤을 그려주세요'
 				/>
 				{/* <div className={styles.buttons}>
           <input
