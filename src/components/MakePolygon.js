@@ -1,51 +1,45 @@
-import React, { useState } from 'react';
-
-const {
-  RenderAfterNavermapsLoaded,
-  NaverMap,
-  Marker,
-  Polygon,
-} = require("react-naver-maps");
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import styles from './MakePolygon.module.css';
+import MakeNaverMap from './MakeNaverMap';
 
 export default function MakePolygon() {
-  const navermaps = window.naver.maps;
-
-  const [marker, setMarker] = useState([]);
   const [polygon, setPolygon] = useState('');
-  const drawMarker = (point) => {
-    setMarker(marker => [...marker, { lng: point.coord.x+'', lat: point.coord.y+'' }])
-    setPolygon(polygon => polygon + ', ' + point.coord.x + ' ' + point.coord.y)
-  };
-  
-  console.log(`POLYGON((${polygon.slice(2)}))`);
-  
+  const getPolygon = (polygon) => setPolygon(polygon)
+  // const getPolygon = useEffect(
+  //   (polygon) => {
+  //     setPolygon(polygon)
+  //     // setResult(`POLYGON((${polygon.slice(2)}))`)
+  //   }, [polygon, result]
+  // )
+  // `POLYGON((${polygon.slice(2)},${polygon.split(',')[1]}))`
+  // const closePolygon = () => {
+  //   console.log(polygon)
+  // }
+  // const resetPolygon = () => getPolygon('')
   return (
-    <RenderAfterNavermapsLoaded clientId={"jqe51ds7wm"}>
-      <NaverMap
-        id="maps-examples-polygon"
-        style={{
-          width: "100%",
-          height: "65vh",
-          marginLeft: "20px",
-          marginRight: "20px",
-        }}
-        // defaultCenter={[126.9783882, 37.5666103]}
-        // defaultZoom={15}
-        onClick={drawMarker}
-      >
-      {marker.map((point,index) =>
-        <Marker
-          key={index}
-          position={new navermaps.LatLng(point.lat, point.lng)} />)}
-      <Polygon
-        paths={[marker]}
-        fillColor={"#ff0000"}
-        fillOpacity={0.3}
-        strokeColor={"#ff0000"}
-        strokeOpacity={0.6}
-        strokeWeight={3}
-      />
-      </NaverMap>
-    </RenderAfterNavermapsLoaded>
+    <div className={styles.container}>
+			<Link to="/" className={styles.menu}>🔄 Drawing</Link>
+			<h1 className={styles.h1}>Making Polygon</h1>
+      <hr className={styles.hr} />
+      <div className={styles.textContainer}>
+        <textarea disabled className={styles.result} value={`POLYGON((${polygon.slice(2)}))`} />
+        {/* <div className={styles.buttons}>
+          <input
+            type="submit"
+            value="완료"
+            onClick={closePolygon}
+            className={`${styles.button} ${styles.complete}`}
+          />
+          <input
+            type="reset"
+            value="초기화"
+            className={styles.button}
+            onClick={resetPolygon}
+          />
+        </div> */}
+      </div>
+      <MakeNaverMap propFunction={getPolygon} />
+		</div>
   )
 }
