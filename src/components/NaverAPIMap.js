@@ -15,7 +15,7 @@ export const NaverAPIMap = ({ option, polygon }) => {
   : polygon.map((geoPoints) => {
     return { lng: geoPoints[0], lat: geoPoints[1] };
   })
-  console.log(geoArray);
+  // console.log(geoArray);
   return (
     <RenderAfterNavermapsLoaded clientId={"jqe51ds7wm"}>
       <NaverMap
