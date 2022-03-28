@@ -6,7 +6,7 @@ const {
   Polygon,
 } = require("react-naver-maps");
 
-export const NaverAPIMap = ({ option, polygon }) => {
+export const DrawNaverMap = ({ option, polygon }) => {
   const geoArray = option === 'WKT'
   ? polygon.map((geoPoints) => {
     const geoPoint = geoPoints.trim().split(" ");
@@ -15,7 +15,7 @@ export const NaverAPIMap = ({ option, polygon }) => {
   : polygon.map((geoPoints) => {
     return { lng: geoPoints[0], lat: geoPoints[1] };
   })
-  console.log(geoArray);
+  // console.log(geoArray);
   return (
     <RenderAfterNavermapsLoaded clientId={"jqe51ds7wm"}>
       <NaverMap
@@ -42,4 +42,4 @@ export const NaverAPIMap = ({ option, polygon }) => {
   );
 };
 
-export default NaverAPIMap;
+export default DrawNaverMap;
