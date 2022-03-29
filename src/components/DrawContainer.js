@@ -20,14 +20,14 @@ function DrawContainer() {
 	return (
 		<div className={styles.container}>
 			<nav className={styles.menus}>
-				<Link to='/' className={`${styles.menu} ${styles.target}`}>
-					폴리곤 그리기
+				<Link to='/' className={styles.menu}>
+					지도 → 폴리곤
 				</Link>
 				{/* <span style={{ fontSize: '18px', color: 'royalblue' }}>
 					<b> | </b>
 				</span> */}
-				<Link to='make-polygon' className={styles.menu}>
-					폴리곤 만들기
+				<Link to='draw' className={`${styles.menu} ${styles.target}`}>
+					폴리곤 → 지도
 				</Link>
 			</nav>
 			{/* <hr className={styles.hr} /> */}
