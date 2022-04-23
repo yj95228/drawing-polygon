@@ -26,7 +26,7 @@ function DrawContainer() {
 				{/* <span style={{ fontSize: '18px', color: 'royalblue' }}>
 					<b> | </b>
 				</span> */}
-				<Link to='draw' className={`${styles.menu} ${styles.target}`}>
+				<Link to='/draw' className={`${styles.menu} ${styles.target}`}>
 					폴리곤 → 지도
 				</Link>
 			</nav>
