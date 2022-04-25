@@ -30,7 +30,6 @@ function InputPolygon(props) {
 	};
 	const resetPolygon = (event) => {
 		setPolygon('');
-		// setState 는 비동기다.
 		props.propFunction(
 			option,
 			option === 'WKT' ? ',' : '{"coordinates":[[[]]]}'

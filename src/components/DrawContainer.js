@@ -23,16 +23,10 @@ function DrawContainer() {
 				<Link to='/' className={styles.menu}>
 					지도 → 폴리곤
 				</Link>
-				{/* <span style={{ fontSize: '18px', color: 'royalblue' }}>
-					<b> | </b>
-				</span> */}
 				<Link to='/draw' className={`${styles.menu} ${styles.target}`}>
 					폴리곤 → 지도
 				</Link>
 			</nav>
-			{/* <hr className={styles.hr} /> */}
-			{/* <h1 className={styles.h1}>Drawing Polygon</h1> */}
-			{/* <hr className={styles.hr} /> */}
 			<InputPolygon propFunction={getPolygon} />
 			<DrawNaverMap polygon={polygon} option={option} />
 			<div className={'map'}></div>

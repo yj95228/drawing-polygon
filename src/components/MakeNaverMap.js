@@ -26,6 +26,7 @@ export default function MakeNaverMap(props) {
           marginLeft: "20px",
           marginRight: "20px",
         }}
+        // default로 설정이 필요하다면
         // defaultCenter={[126.9783882, 37.5666103]}
         // defaultZoom={15}
         onClick={drawMarker}
