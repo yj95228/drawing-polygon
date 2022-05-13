@@ -28,7 +28,7 @@ function InputPolygon(props) {
 		event.preventDefault();
 		drawingPolygon();
 	};
-	const resetPolygon = (event) => {
+	const resetPolygon = () => {
 		setPolygon('');
 		props.propFunction(
 			option,

@@ -30,7 +30,8 @@
 	font-family: 'Fredoka', sans-serif;
 	width: 100%;
 	height: 80px;
-	margin: 0px 0px 10px 0px;
+	/* margin: 0px 0px 10px 0px; */
+  margin: 0px 10px 10px 0px;
 	padding: 10px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
@@ -44,21 +45,25 @@
 	flex-direction: column;
 }
 .button {
-	display: inline;
-	width: 100px;
-	height: 45px;
-	font-size: 16px;
-	margin-bottom: 10px;
-	border: none;
-	border-radius: 5px;
-	background-color: #40a6fd;
-	color: #fff;
-	cursor: pointer;
-	text-align: center;
+  display: inline;
+  width: 100px;
+  height: 45px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border: 1px solid #40a6fd;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #40a6fd;
+  cursor: pointer;
+  text-align: center;
 }
 .button:hover {
-	background-color: dodgerblue;
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.1);
 }
-.complete {
-	box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
+.submit {
+  background-color: #40a6fd;
+  color: #fff;
+}
+.submit:hover {
+  background-color: dodgerblue;
 }
