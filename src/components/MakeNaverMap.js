@@ -12,7 +12,7 @@ export default function MakeNaverMap(props) {
   const [marker, setMarker] = useState([]);
   const drawMarker = (point) => {
     setMarker(marker => [...marker, { lng: point.coord.x, lat: point.coord.y}])
-    props.propFunction(polygon => `${polygon}, ${point.coord.x} ${point.coord.y}`)  
+    props.getPolygon(polygon => `${polygon}, ${point.coord.x} ${point.coord.y}`)  
   };
   
   return (

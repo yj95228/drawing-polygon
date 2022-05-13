@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import MakeNaverMap from './MakeNaverMap';
 import styles from './MakePolygon.module.css';
@@ -7,7 +7,7 @@ export default function MakePolygon() {
 	const [polygon, setPolygon] = useState('');
   const getPolygon = polygon => setPolygon(polygon);
   const closePolygon = () => {
-    setPolygon(`${polygon}, ${polygon.split(',')[1].trim()}`)
+    setPolygon(polygon && `${polygon}, ${polygon.split(',')[1].trim()}`)
   }
 	return (
 		<div className={styles.container}>
@@ -21,7 +21,7 @@ export default function MakePolygon() {
 			</nav>
 			<div className={styles.textContainer}>
 				<textarea
-					disabled
+          disabled
 					className={styles.result}
 					value={polygon && `POLYGON((${polygon.slice(2)}))`}
 					placeholder='지도 상에 원하는 지점을 클릭하여 폴리곤을 그려주세요'
@@ -35,7 +35,7 @@ export default function MakePolygon() {
 					/>
 				</div>
 			</div>
-			<MakeNaverMap propFunction={getPolygon} />
+			<MakeNaverMap getPolygon={getPolygon} />
 		</div>
 	);
 }
