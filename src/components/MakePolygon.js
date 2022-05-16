@@ -4,10 +4,14 @@ import MakeNaverMap from './MakeNaverMap';
 import styles from './MakePolygon.module.css';
 
 export default function MakePolygon() {
-	const [polygon, setPolygon] = useState('');
+  const [polygon, setPolygon] = useState('');
+  const result = useRef();
   const getPolygon = polygon => setPolygon(polygon);
   const closePolygon = () => {
     setPolygon(polygon && `${polygon}, ${polygon.split(',')[1].trim()}`)
+  }
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(result.current.value)
   }
 	return (
 		<div className={styles.container}>
@@ -21,7 +25,8 @@ export default function MakePolygon() {
 			</nav>
 			<div className={styles.textContainer}>
 				<textarea
-          disabled
+          readOnly
+          ref={result}
 					className={styles.result}
 					value={polygon && `POLYGON((${polygon.slice(2)}))`}
 					placeholder='지도 상에 원하는 지점을 클릭하여 폴리곤을 그려주세요'
@@ -32,6 +37,12 @@ export default function MakePolygon() {
 						value='닫기'
 						onClick={closePolygon}
 						className={`${styles.button} ${styles.submit}`}
+					/>
+					<input
+						type='button'
+						value='복사'
+						onClick={copyToClipboard}
+						className={styles.button}
 					/>
 				</div>
 			</div>
