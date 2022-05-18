@@ -1,4 +1,9 @@
-import React, { useState } from 'react';
+import React, {
+  useState,
+  useCallback,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 
 const {
   RenderAfterNavermapsLoaded,
@@ -7,18 +12,27 @@ const {
   Polygon,
 } = require("react-naver-maps");
 
-export default function MakeNaverMap(props) {
+const MakeNaverMap = forwardRef((props, ref) => {
   const navermaps = window.naver.maps;
   const [marker, setMarker] = useState([]);
   const drawMarker = (point) => {
-    setMarker(marker => [...marker, { lng: point.coord.x, lat: point.coord.y}])
-    props.getPolygon(polygon => `${polygon}, ${point.coord.x} ${point.coord.y}`)  
+    setMarker((marker) => [
+      ...marker,
+      { lng: point.coord.x, lat: point.coord.y },
+    ]);
+    props.getPolygon(
+      (polygon) => `${polygon}, ${point.coord.x} ${point.coord.y}`
+    );
   };
-  
+  const resetMarker = () => setMarker([]);
+  useImperativeHandle(ref, () => ({
+    setMarker: () => resetMarker(),
+  }));
+  console.log(marker);
   return (
     <RenderAfterNavermapsLoaded clientId={"jqe51ds7wm"}>
       <NaverMap
-        id="maps-examples-polygon"
+        id='maps-examples-polygon'
         style={{
           width: "100%",
           height: "65vh",
@@ -30,19 +44,25 @@ export default function MakeNaverMap(props) {
         // defaultZoom={15}
         onClick={drawMarker}
       >
-      {marker.map((point,index) =>
-        <Marker
-          key={index}
-          position={new navermaps.LatLng(point.lat, point.lng)} />)}
-      <Polygon
-        paths={[marker]}
-        fillColor={"#ff0000"}
-        fillOpacity={0.3}
-        strokeColor={"#ff0000"}
-        strokeOpacity={0.6}
-        strokeWeight={3}
-      />
+        {marker.map((point, index) => (
+          <Marker
+            key={index}
+            position={new navermaps.LatLng(point.lat, point.lng)}
+          />
+        ))}
+        {marker.length ? (
+          <Polygon
+            paths={[marker]}
+            fillColor={"#ff0000"}
+            fillOpacity={0.3}
+            strokeColor={"#ff0000"}
+            strokeOpacity={0.6}
+            strokeWeight={3}
+          />
+        ) : null}
       </NaverMap>
     </RenderAfterNavermapsLoaded>
-  )
-}
+  );
+});
+
+export default MakeNaverMap;

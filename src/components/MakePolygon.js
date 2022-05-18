@@ -8,13 +8,20 @@ export default function MakePolygon() {
   const [toastStatus, setToastStatus] = useState(false);
   const result = useRef();
   const toast = useRef();
+  const resetMarker = useRef();
   const getPolygon = (polygon) => setPolygon(polygon);
   const closePolygon = () => {
     setPolygon(polygon && `${polygon}, ${polygon.split(",")[1].trim()}`);
   };
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(result.current.value);
-    setToastStatus(true);
+    if (polygon) {
+      navigator.clipboard.writeText(result.current.value);
+      setToastStatus(true);
+    }
+  };
+  const resetPolygon = () => {
+    setPolygon("");
+    resetMarker.current.setMarker();
   };
   useEffect(() => {
     if (toastStatus) setTimeout(() => setToastStatus(false), 1000);
@@ -44,15 +51,18 @@ export default function MakePolygon() {
           </div>
         )}
         <div className={styles.buttons}>
-          <input
-            type='submit'
-            value='닫기'
+          <button
             onClick={closePolygon}
             className={`${styles.button} ${styles.submit}`}
-          />
+          >
+            닫기
+          </button>
+          <button onClick={resetPolygon} className={styles.button}>
+            초기화
+          </button>
         </div>
       </div>
-      <MakeNaverMap getPolygon={getPolygon} />
+      <MakeNaverMap ref={resetMarker} getPolygon={getPolygon} />
     </div>
   );
 }
