@@ -6,17 +6,32 @@
 	padding: 10px;
 }
 .menus {
-	height: 2.5rem;
 	font-family: 'IBM Plex Sans KR', sans-serif;
+  margin-bottom: 26px;
 }
 .menu {
-	font-size: 18px;
-	color: royalblue;
-	text-decoration: none;
-	margin: 0 15px 0 15px;
+  font-size: 18px;
+  color: royalblue;
+  text-decoration: none;
+  border: 0;
+  padding: 10px 30px;
+  cursor: pointer;
+  z-index: 0;
 }
 .target {
 	font-weight: 600;
+  position:relative;
+}
+.target::after {
+  content: '';
+  width: 100%;
+  height: 6px;
+  background: #e0e0ff;
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  bottom: 1px;
+  z-index: -1;
 }
 .textContainer {
 	display: flex;
@@ -30,7 +45,6 @@
 	font-family: 'Fredoka', sans-serif;
 	width: 100%;
 	height: 80px;
-	/* margin: 0px 0px 10px 0px; */
   margin: 0px 10px 10px 0px;
 	padding: 10px;
 	border: 1px solid #ccc;

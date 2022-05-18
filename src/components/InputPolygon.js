@@ -44,18 +44,15 @@ ex) {"coordinates": [[[127.021057,37.503455],[127.028214,37.488473],[127.03507,3
   return (
     <>
       <div className={styles.options}>
-        <span
+        <button
           className={
             option === WKT ? `${styles.target} ${styles.option}` : styles.option
           }
           onClick={selectWKT}
         >
           {WKT}
-        </span>
-        <span style={{ margin: "0 10px 0 10px" }}>
-          <b> | </b>
-        </span>
-        <span
+        </button>
+        <button
           className={
             option === JSON
               ? `${styles.target} ${styles.option}`
@@ -64,7 +61,7 @@ ex) {"coordinates": [[[127.021057,37.503455],[127.028214,37.488473],[127.03507,3
           onClick={selectJSON}
         >
           {JSON}
-        </span>
+        </button>
       </div>
       <div onSubmit={submitPolygon} className={styles.container}>
         {option === WKT ? (
