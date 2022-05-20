@@ -27,7 +27,7 @@ function DrawContainer() {
 					폴리곤 → 지도
 				</Link>
 			</nav>
-			<InputPolygon propFunction={getPolygon} />
+			<InputPolygon getPolygon={getPolygon} />
 			<DrawNaverMap polygon={polygon} option={option} />
 			<div className={'map'}></div>
 		</div>
