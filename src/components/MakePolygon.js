@@ -5,13 +5,16 @@ import styles from "./MakePolygon.module.css";
 
 export default function MakePolygon() {
   const [polygon, setPolygon] = useState("");
+  const [closeStatus, setCloseStatus] = useState(false);
   const [toastStatus, setToastStatus] = useState(false);
   const result = useRef();
   const toast = useRef();
   const resetMarker = useRef();
   const getPolygon = (polygon) => setPolygon(polygon);
   const closePolygon = () => {
-    setPolygon(polygon && `${polygon}, ${polygon.split(",")[1].trim()}`);
+    if (!closeStatus)
+      setPolygon(polygon && `${polygon}, ${polygon.split(",")[1].trim()}`);
+    setCloseStatus(true);
   };
   const copyToClipboard = () => {
     if (polygon) {
@@ -21,6 +24,7 @@ export default function MakePolygon() {
   };
   const resetPolygon = () => {
     setPolygon("");
+    setCloseStatus(false);
     resetMarker.current.setMarker();
   };
   useEffect(() => {
