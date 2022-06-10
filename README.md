@@ -10,16 +10,16 @@
 
 ## 테스트
 - 지도 → 폴리곤
-![image](https://user-images.githubusercontent.com/30275955/164215022-7c9dab13-b7d0-4dc3-af6f-8fb9c62b43d2.png)
+![image](https://user-images.githubusercontent.com/30275955/172971322-cb37cd83-f136-487f-bc90-85058a196170.png)
 - 폴리곤 → 지도
-![image](https://user-images.githubusercontent.com/30275955/164896267-ac414b93-4b0e-4211-a8e8-8b65251c4f35.png)
+![image](https://user-images.githubusercontent.com/30275955/172971415-e6528e4e-047b-49cb-9433-9c8f98d46101.png)
 
 ## 추가 예정 기능
 - 다크모드
+- 타입스크립트 & 상태관리 라이브러리 적용
 - 지도 → 폴리곤 페이지
-  - 폴리곤 닫는 기능
-  - 초기화 버튼
-  - textInput 선택 시 복사 기능
+  - geoJSON 형식 반환 기능 추가
 - 폴리곤 → 지도 페이지
   - 형식에 대한 설명 툴팁
   - input값 유효성 검사
+- 폴리곤 형식 변환 페이지
