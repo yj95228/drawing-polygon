@@ -10,7 +10,7 @@
 
 ## 테스트
 - 지도 → 폴리곤
-![image](https://user-images.githubusercontent.com/30275955/172971322-cb37cd83-f136-487f-bc90-85058a196170.png)
+![image](https://user-images.githubusercontent.com/30275955/172971572-e6bbf8ea-1680-476a-9a97-0b49e8e9731b.png)
 - 폴리곤 → 지도
 ![image](https://user-images.githubusercontent.com/30275955/172971415-e6528e4e-047b-49cb-9433-9c8f98d46101.png)
 
