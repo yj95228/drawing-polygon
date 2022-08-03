@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import MakeNaverMap from "./MakeNaverMap";
-import styles from "./MakePolygon.module.css";
+import ClickNaverMap from "./ClickNaverMap";
+import styles from "./ClickPolygon.module.css";
 
-export default function MakePolygon() {
+export default function ClickPolygon() {
   const [polygon, setPolygon] = useState("");
   const [closeStatus, setCloseStatus] = useState(false);
   const [toastStatus, setToastStatus] = useState(false);
@@ -66,7 +66,7 @@ export default function MakePolygon() {
           </button>
         </div>
       </div>
-      <MakeNaverMap ref={resetMarker} getPolygon={getPolygon} />
+      <ClickNaverMap ref={resetMarker} getPolygon={getPolygon} />
     </div>
   );
 }
