@@ -22,7 +22,7 @@ export const DrawNaverMap = ({ option, polygon }) => {
         id='maps-examples-polygon'
         style={{
           width: "100%",
-          height: "65vh",
+          height: "70vh",
           marginLeft: "20px",
           marginRight: "20px",
         }}
