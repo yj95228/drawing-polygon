@@ -7,7 +7,7 @@ const {
   Polygon,
 } = require("react-naver-maps");
 
-const MakeNaverMap = forwardRef((props, ref) => {
+const ClickNaverMap = forwardRef((props, ref) => {
   const navermaps = window.naver.maps;
   const [marker, setMarker] = useState([]);
   const drawMarker = (point) => {
@@ -60,4 +60,4 @@ const MakeNaverMap = forwardRef((props, ref) => {
   );
 });
 
-export default MakeNaverMap;
+export default ClickNaverMap;
