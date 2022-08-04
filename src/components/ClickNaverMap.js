@@ -23,7 +23,6 @@ const ClickNaverMap = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     setMarker: () => resetMarker(),
   }));
-  console.log(marker);
   return (
     <RenderAfterNavermapsLoaded clientId={"jqe51ds7wm"}>
       <NaverMap
