@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import ClickNaverMap from "./ClickNaverMap";
-import styles from "./ClickPolygon.module.css";
+import React, { useState, useEffect, useRef } from 'react';
+import ClickNaverMap from './ClickNaverMap';
+import styles from './ClickPolygon.module.css';
+import Nav from '../Nav';
 
 export default function ClickPolygon() {
-  const [polygon, setPolygon] = useState("");
+  const [polygon, setPolygon] = useState('');
   const [closeStatus, setCloseStatus] = useState(false);
   const [toastStatus, setToastStatus] = useState(false);
   const result = useRef();
@@ -13,7 +13,7 @@ export default function ClickPolygon() {
   const getPolygon = (polygon) => setPolygon(polygon);
   const closePolygon = () => {
     if (!closeStatus)
-      setPolygon(polygon && `${polygon}, ${polygon.split(",")[1].trim()}`);
+      setPolygon(polygon && `${polygon}, ${polygon.split(',')[1].trim()}`);
     setCloseStatus(true);
   };
   const copyToClipboard = () => {
@@ -23,7 +23,7 @@ export default function ClickPolygon() {
     }
   };
   const resetPolygon = () => {
-    setPolygon("");
+    setPolygon('');
     setCloseStatus(false);
     resetMarker.current.setMarker();
   };
@@ -32,14 +32,7 @@ export default function ClickPolygon() {
   }, [toastStatus]);
   return (
     <div className={styles.container}>
-      <nav className={styles.menus}>
-        <Link to='/' className={`${styles.menu} ${styles.target}`}>
-          지도 → 폴리곤
-        </Link>
-        <Link to='draw' className={styles.menu}>
-          폴리곤 → 지도
-        </Link>
-      </nav>
+      <Nav />
       <div className={styles.textContainer}>
         <textarea
           readOnly
