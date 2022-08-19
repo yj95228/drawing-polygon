@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import DrawContainer from "./components/DrawContainer.js";
-import ClickPolygon from "./components/ClickPolygon.js";
+import ClickPolygon from "./components/click/ClickPolygon.js";
+import DrawContainer from "./components/input/DrawContainer.js";
 
 export default function App() {
   return (
