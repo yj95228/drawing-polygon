@@ -1,19 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
+import useStore from '../../store/store';
 import ClickNaverMap from './ClickNaverMap';
 import styles from './ClickPolygon.module.css';
 import Nav from '../Nav';
 
 export default function ClickPolygon() {
-  const [polygon, setPolygon] = useState('');
+  const { polygon, closePolygon, resetPolygon } = useStore((state) => state);
   const [closeStatus, setCloseStatus] = useState(false);
   const [toastStatus, setToastStatus] = useState(false);
   const result = useRef();
   const toast = useRef();
-  const resetMarker = useRef();
-  const getPolygon = (polygon) => setPolygon(polygon);
-  const closePolygon = () => {
-    if (!closeStatus)
-      setPolygon(polygon && `${polygon}, ${polygon.split(',')[1].trim()}`);
+  const onClickCloseBtn = () => {
+    if (!closeStatus) closePolygon();
     setCloseStatus(true);
   };
   const copyToClipboard = () => {
@@ -22,11 +20,11 @@ export default function ClickPolygon() {
       setToastStatus(true);
     }
   };
-  const resetPolygon = () => {
-    setPolygon('');
+  const onclickResetBtn = () => {
+    resetPolygon();
     setCloseStatus(false);
-    resetMarker.current.setMarker();
   };
+  useEffect(() => resetPolygon(), [resetPolygon]);
   useEffect(() => {
     if (toastStatus) setTimeout(() => setToastStatus(false), 1000);
   }, [toastStatus]);
@@ -49,17 +47,17 @@ export default function ClickPolygon() {
         )}
         <div className={styles.buttons}>
           <button
-            onClick={closePolygon}
+            onClick={onClickCloseBtn}
             className={`${styles.button} ${styles.submit}`}
           >
             닫기
           </button>
-          <button onClick={resetPolygon} className={styles.button}>
+          <button onClick={onclickResetBtn} className={styles.button}>
             초기화
           </button>
         </div>
       </div>
-      <ClickNaverMap ref={resetMarker} getPolygon={getPolygon} />
+      <ClickNaverMap />
     </div>
   );
 }
