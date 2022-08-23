@@ -5,9 +5,9 @@ import {
   Marker,
   Polygon,
 } from 'react-naver-maps';
-import useStore from '../../store/store';
+import useStore from '../../store/click';
 
-const ClickNaverMap = () => {
+export default function ClickNaverMap() {
   const navermaps = window.naver.maps;
   const { marker, clickPolygon } = useStore((state) => state);
   return (
@@ -42,5 +42,3 @@ const ClickNaverMap = () => {
     </RenderAfterNavermapsLoaded>
   );
 };
-
-export default ClickNaverMap;

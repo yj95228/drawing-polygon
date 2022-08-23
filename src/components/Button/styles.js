@@ -1,15 +1,6 @@
-import React from 'react';
 import styled from '@emotion/styled';
 
-export default function Button({ onClick, text, ...props }) {
-  return (
-    <StyledButton {...props} onClick={onClick}>
-      {text}
-    </StyledButton>
-  );
-}
-
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
   display: inline;
   width: 100px;
   height: 45px;

@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import useStore from '../../store/store';
-import ClickNaverMap from './ClickNaverMap';
+import useStore from '../../store/click';
+import ClickNaverMap from './NaverMap';
+//TODO: module.css에서 emotion으로 완전히 변경
 import styles from './ClickPolygon.module.css';
-import Nav from '../Nav';
-import Button from '../Button';
+import Nav from '../../components/Nav/index';
+import Button from '../../components/Button/index';
 
 export default function ClickPolygon() {
   const { polygon, closePolygon, resetPolygon } = useStore((state) => state);
@@ -33,6 +34,7 @@ export default function ClickPolygon() {
     <div className={styles.container}>
       <Nav />
       <div className={styles.textContainer}>
+        {/* TODO: textarea도 재사용성을 위해 component로 분리하고 싶은데 ref 참조가 styled component에 안 걸려서 우선 그대로 둠 */}
         <textarea
           readOnly
           ref={result}

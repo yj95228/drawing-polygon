@@ -6,7 +6,7 @@ const {
   Polygon,
 } = require("react-naver-maps");
 
-export const DrawNaverMap = ({ option, polygon }) => {
+export default function DrawNaverMap({ option, polygon }) {
   const geoArray =
     option === "WKT"
       ? polygon.map((geoPoints) => {
@@ -41,5 +41,3 @@ export const DrawNaverMap = ({ option, polygon }) => {
     </RenderAfterNavermapsLoaded>
   );
 };
-
-export default DrawNaverMap;
