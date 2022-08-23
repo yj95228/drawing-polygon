@@ -3,6 +3,7 @@ import useStore from '../../store/store';
 import ClickNaverMap from './ClickNaverMap';
 import styles from './ClickPolygon.module.css';
 import Nav from '../Nav';
+import Button from '../Button';
 
 export default function ClickPolygon() {
   const { polygon, closePolygon, resetPolygon } = useStore((state) => state);
@@ -46,15 +47,8 @@ export default function ClickPolygon() {
           </div>
         )}
         <div className={styles.buttons}>
-          <button
-            onClick={onClickCloseBtn}
-            className={`${styles.button} ${styles.submit}`}
-          >
-            닫기
-          </button>
-          <button onClick={onclickResetBtn} className={styles.button}>
-            초기화
-          </button>
+          <Button onClick={onClickCloseBtn} text='닫기' submit />
+          <Button onClick={onclickResetBtn} text='초기화' />
         </div>
       </div>
       <ClickNaverMap />
