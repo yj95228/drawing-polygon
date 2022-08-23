@@ -1,6 +1,7 @@
 //TODO: Upgrade createRoot (ReactDOM.render is not longer supported in React 18)
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './reset.css';
 import './index.css';
 import App from './App';
 import { RenderAfterNavermapsLoaded } from 'react-naver-maps';
