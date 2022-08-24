@@ -7,7 +7,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<ClickPolygon />} />
-        <Route path='draw' element={<DrawContainer />} />
+        <Route path='input' element={<DrawContainer />} />
       </Routes>
     </BrowserRouter>
   );
