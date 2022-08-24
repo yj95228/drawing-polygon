@@ -1,12 +1,11 @@
 import React from 'react';
-//TODO: module.css에서 emotion으로 완전히 변경
-import styles from './DrawContainer.module.css';
-import DrawNaverMap from './NaverMap.jsx';
 import useStore from '../../store/input';
+import {Wrapper} from './styles'
+import Flex from '../../components/Flex';
 import Nav from '../../components/Nav';
 import Button from '../../components/Button';
 import Option from '../../components/Option';
-
+import DrawNaverMap from './NaverMap.jsx';
 
 function DrawContainer() {
   const [WKT, JSON] = ['WKT','JSON'];
@@ -36,9 +35,9 @@ function DrawContainer() {
     }
   };
   return (
-    <div className={styles.container}>
+    <Wrapper direction='column'>
       <Nav />
-      <div className={styles.options}>
+      <div className='option-wrapper'>
         {option === WKT ? (
           <Option onClick={onClickWKT} text='WKT' target='true' />
         ) : (
@@ -50,10 +49,9 @@ function DrawContainer() {
           <Option onClick={onClickJSON} text='JSON' />
         )}
       </div>
-      <form onSubmit={submitPolygon} className={styles.form}>
+      <form onSubmit={submitPolygon}>
         {option === WKT ? (
           <textarea
-            className={styles.input}
             onChange={setInput}
             onKeyDown={keyDownPolygon}
             value={input}
@@ -61,20 +59,19 @@ function DrawContainer() {
           />
         ) : (
           <textarea
-            className={styles.input}
             onChange={setInput}
             onKeyDown={keyDownPolygon}
             value={input}
             placeholder={JSONPlaceholder}
           />
         )}
-        <div className={styles.buttons}>
+        <Flex direction='column'>
           <Button onClick={submitPolygon} text='그리기' submit />
           <Button onClick={() => {resetPolygon(option)}} text='초기화' />
-        </div>
+        </Flex>
       </form>
       <DrawNaverMap polygon={polygon} option={option} />
-    </div>
+    </Wrapper>
   );
 }
 

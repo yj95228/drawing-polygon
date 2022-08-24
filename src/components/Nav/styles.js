@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 
 export const NavContainer = styled.nav`
   font-family: 'Fredoka', sans-serif;
-  margin-bottom: 20px;
+  margin-top: 20px;
 `;
 
 export const Menu = styled(NavLink)`
