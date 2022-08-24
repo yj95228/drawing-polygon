@@ -1,13 +1,13 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import DrawContainer from "./components/DrawContainer.js";
-import ClickPolygon from "./components/ClickPolygon.js";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ClickPolygon from './container/click';
+import DrawContainer from './container/input';
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<ClickPolygon />} />
-        <Route path='draw' element={<DrawContainer />} />
+        <Route path='input' element={<DrawContainer />} />
       </Routes>
     </BrowserRouter>
   );
