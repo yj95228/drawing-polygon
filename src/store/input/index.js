@@ -3,13 +3,13 @@ import create from 'zustand';
 export const useStore = create((set) => ({
   input: '',
   option: 'WKT',
-  polygon: [],
+  polygon: '',
   selectWKT: () => set({ option: 'WKT' }),
   selectJSON: () => set({ option: 'JSON' }),
   setInput: (event) => set({ input: event.target.value }),
   drawPolygon: (option, input) => {
     if (option === 'WKT') {
-      set({ polygon: input.replace(/[^0-9\.\s,]/g, '').split(',') });
+      set({ polygon: input });
     } else {
       if (input) {
         set({ polygon: JSON.parse(input).coordinates[0] });
@@ -18,7 +18,7 @@ export const useStore = create((set) => ({
   },
   resetPolygon: (option) => {
     if (option === 'WKT') {
-      set({ input: '', polygon: [] });
+      set({ input: '', polygon: '' });
     } else {
       set({
         input: '',
