@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "lib": ["es6", "DOM"],
+    "jsx": "preserve",
+    "outDir": "build",
+    "baseUrl": ".",
+    "paths": {
+      "components/*": ["src/components/*"],
+      "container/*": ["src/container/*"],
+      "store/*": ["src/store/*"]
+    },
+    "allowJs": true,
+    "checkJs": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "removeComments": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "extends": "./tsconfig.paths.json",
+  "include": ["src", "tsconfig.paths.json"],
+  "exclude": ["node_modules"]
+}
