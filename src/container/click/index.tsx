@@ -1,24 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
-import useStore from '../../store/click';
-import Flex from '../../components/Flex';
-import Nav from '../../components/Nav';
-import Button from '../../components/Button';
-import { Wrapper } from './styles'
+import useStore from 'store/click';
+import Flex from 'components/Flex';
+import Nav from 'components/Nav';
+import Button from 'components/Button';
+import { Wrapper } from './styles';
 import ClickNaverMap from './NaverMap';
 
 export default function ClickPolygon() {
   const { polygon, closePolygon, resetPolygon } = useStore((state) => state);
   const [closeStatus, setCloseStatus] = useState(false);
   const [toastStatus, setToastStatus] = useState(false);
-  const result = useRef();
-  const toast = useRef();
+  const result = useRef<HTMLTextAreaElement>(null);
+  const toast = useRef<HTMLDivElement>(null);
   const onClickCloseBtn = () => {
     if (!closeStatus) closePolygon();
     setCloseStatus(true);
   };
   const copyToClipboard = () => {
-    if (polygon) {
-      navigator.clipboard.writeText(result.current.value);
+    if (polygon && result.current) {
+      navigator.clipboard.writeText(result.current?.value);
       setToastStatus(true);
     }
   };

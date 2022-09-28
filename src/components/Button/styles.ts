@@ -1,6 +1,9 @@
 import styled from '@emotion/styled';
 
-export const StyledButton = styled.button`
+export interface StyledProps {
+  submit?: boolean;
+}
+export const StyledButton = styled.button<StyledProps>`
   display: inline;
   width: 100px;
   height: 45px;

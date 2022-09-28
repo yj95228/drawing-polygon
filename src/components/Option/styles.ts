@@ -1,6 +1,9 @@
 import styled from '@emotion/styled';
 
-export const StyledButton = styled.button`
+export interface StyledProps {
+  target?: boolean;
+}
+export const StyledButton = styled.button<StyledProps>`
   border: 0;
   border-radius: 20px;
   padding: 5px 15px;
