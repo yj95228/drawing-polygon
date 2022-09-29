@@ -1,11 +1,14 @@
 import create from 'zustand';
 
 interface LngLat {
-  x: string | number;
-  y: string | number;
+  lng: number;
+  lat: number;
 }
 interface Coord {
-  coord: LngLat;
+  coord: {
+    x: number;
+    y: number;
+  };
 }
 interface Store {
   polygon: string;
@@ -17,10 +20,10 @@ interface Store {
 export const useStore = create<Store>((set) => ({
   polygon: '',
   marker: [],
-  clickPolygon: ({ coord: { x: lng, y: lat } }) =>
+  clickPolygon: ({ coord: { x, y } }) =>
     set((state) => ({
-      polygon: `${state.polygon}, ${lng} ${lat}`,
-      marker: [...state.marker, { x: lng, y: lat }],
+      polygon: `${state.polygon}, ${x} ${y}`,
+      marker: [...state.marker, { lng: x, lat: y }],
     })),
   closePolygon: () =>
     set((state) => ({

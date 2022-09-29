@@ -5,8 +5,24 @@ import {
   Marker,
   Polygon,
 } from 'react-naver-maps';
-import useStore from '../../store/click';
+import useStore from 'store/click';
 
+declare global {
+  interface Constructable<T> {
+    new (...args: any): T;
+  }
+  interface LatLng {
+    lat: number;
+    lng: number;
+  }
+  interface Window {
+    naver: {
+      maps: {
+        LatLng: Constructable<LatLng>;
+      };
+    };
+  }
+}
 export default function ClickNaverMap() {
   const navermaps = window.naver.maps;
   const { marker, clickPolygon } = useStore((state) => state);
@@ -20,15 +36,13 @@ export default function ClickNaverMap() {
           marginLeft: '20px',
           marginRight: '20px',
         }}
-        // default로 설정이 필요하다면
-        // defaultCenter={[126.9783882, 37.5666103]}
-        // defaultZoom={15}
+        defaultZoom={14}
         onClick={clickPolygon}
       >
         {marker.map(({ lat, lng }, index) => (
           <Marker key={index} position={new navermaps.LatLng(lat, lng)} />
         ))}
-        {marker.length ? (
+        {marker.length && (
           <Polygon
             paths={[marker]}
             fillColor={'#ff0000'}
@@ -37,8 +51,8 @@ export default function ClickNaverMap() {
             strokeOpacity={0.6}
             strokeWeight={3}
           />
-        ) : null}
+        )}
       </NaverMap>
     </RenderAfterNavermapsLoaded>
   );
-};
+}
