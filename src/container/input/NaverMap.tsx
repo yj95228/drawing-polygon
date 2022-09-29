@@ -5,7 +5,12 @@ import {
   Polygon,
 } from 'react-naver-maps';
 
-export default function DrawNaverMap({ option, polygon }) {
+interface Props {
+  option: 'WKT' | 'JSON';
+  polygon: string;
+}
+
+export default function DrawNaverMap({ option, polygon }: Props) {
   let polygonArray =
     option === 'WKT'
       ? // )[공백],[공백](
@@ -18,11 +23,18 @@ export default function DrawNaverMap({ option, polygon }) {
             ? // [공백],[공백]
               polygon[0].split(/\s*,\s*/).map((point) => {
                 const [x, y] = point.split(' ');
-                return { lng: parseFloat(x), lat: parseFloat(y) };
+                return { lng: x, lat: y };
               })
             : { lng: undefined, lat: undefined };
         })
-      : polygon.map((point) => ({ lng: point[0], lat: point[1] }));
+      : polygon.length > 0
+      ? [
+          JSON.parse(polygon).coordinates[0].map((point: string[]) => ({
+            lng: point[0],
+            lat: point[1],
+          })),
+        ]
+      : [{ lng: undefined, lat: undefined }];
   return (
     <RenderAfterNavermapsLoaded clientId={'jqe51ds7wm'}>
       <NaverMap
@@ -34,7 +46,6 @@ export default function DrawNaverMap({ option, polygon }) {
           marginRight: '20px',
         }}
         center={polygonArray[0][0]}
-        // zoom={15}
       >
         {polygonArray[0].length && (
           <Polygon

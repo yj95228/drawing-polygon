@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import Flex from '../../components/Flex';
+import Flex from 'components/Flex';
 
 export const Wrapper = styled(Flex)`
   .option-wrapper {

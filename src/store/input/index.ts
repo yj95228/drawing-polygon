@@ -1,7 +1,6 @@
 import React from 'react';
 import create from 'zustand';
 
-type Option = 'WKT' | 'JSON';
 interface Store {
   input: string;
   option: 'WKT' | 'JSON';
@@ -9,8 +8,8 @@ interface Store {
   selectWKT: () => void;
   selectJSON: () => void;
   setInput: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  drawPolygon: (option: Option, input: string) => void;
-  resetPolygon: (option: Option) => void;
+  drawPolygon: (input: string) => void;
+  resetPolygon: () => void;
 }
 export const useStore = create<Store>((set) => ({
   input: '',
@@ -19,24 +18,11 @@ export const useStore = create<Store>((set) => ({
   selectWKT: () => set({ option: 'WKT' }),
   selectJSON: () => set({ option: 'JSON' }),
   setInput: (event) => set({ input: event.target?.value }),
-  drawPolygon: (option, input) => {
-    if (option === 'WKT') {
-      set({ polygon: input });
-    } else {
-      if (input) {
-        set({ polygon: JSON.parse(input).coordinates[0] });
-      }
-    }
+  drawPolygon: (input) => {
+    set({ polygon: input });
   },
-  resetPolygon: (option) => {
-    if (option === 'WKT') {
-      set({ input: '', polygon: '' });
-    } else {
-      set({
-        input: '',
-        polygon: JSON.parse('{"coordinates":[[]]}').coordinates,
-      });
-    }
+  resetPolygon: () => {
+    set({ input: '', polygon: '' });
   },
 }));
 

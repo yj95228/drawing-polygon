@@ -30,15 +30,15 @@ function DrawContainer() {
   } = useStore((state) => state);
   const onClickWKT = () => {
     selectWKT();
-    resetPolygon(WKT);
+    resetPolygon();
   };
   const onClickJSON = () => {
     selectJSON();
-    resetPolygon(JSON);
+    resetPolygon();
   };
   const submitPolygon = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    drawPolygon(option, input);
+    drawPolygon(input);
   };
   const keyDownPolygon = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter') {
@@ -78,12 +78,7 @@ function DrawContainer() {
         )}
         <Flex direction='column'>
           <Button onClick={submitPolygon} text='그리기' submit />
-          <Button
-            onClick={() => {
-              resetPolygon(option);
-            }}
-            text='초기화'
-          />
+          <Button onClick={resetPolygon} text='초기화' />
         </Flex>
       </form>
       <DrawNaverMap polygon={polygon} option={option} />
