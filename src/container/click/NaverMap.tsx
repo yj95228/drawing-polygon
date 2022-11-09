@@ -36,8 +36,10 @@ export default function ClickNaverMap() {
           marginLeft: '20px',
           marginRight: '20px',
         }}
-        defaultZoom={14}
+        defaultZoom={15}
         onClick={clickPolygon}
+        zoomControl={true}
+        mapTypeControl={true}
       >
         {marker.map(({ lat, lng }, index) => (
           <Marker key={index} position={new navermaps.LatLng(lat, lng)} />

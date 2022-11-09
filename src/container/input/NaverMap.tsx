@@ -45,7 +45,10 @@ export default function DrawNaverMap({ option, polygon }: Props) {
           marginLeft: '20px',
           marginRight: '20px',
         }}
+        defaultZoom={15}
         center={polygonArray[0][0]}
+        zoomControl={true}
+        mapTypeControl={true}
       >
         {polygonArray[0].length && (
           <Polygon
