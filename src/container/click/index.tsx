@@ -26,7 +26,6 @@ export default function ClickPolygon() {
     resetPolygon();
     setCloseStatus(false);
   };
-  useEffect(() => resetPolygon(), [resetPolygon]);
   useEffect(() => {
     if (toastStatus) setTimeout(() => setToastStatus(false), 1000);
   }, [toastStatus]);
