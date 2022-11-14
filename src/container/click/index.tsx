@@ -17,6 +17,7 @@ export default function ClickPolygon() {
     setCloseStatus(true);
   };
   const copyToClipboard = () => {
+    onClickCloseBtn();
     if (polygon && result.current) {
       navigator.clipboard.writeText(result.current?.value);
       setToastStatus(true);
