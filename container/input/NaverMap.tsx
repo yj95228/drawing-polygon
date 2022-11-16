@@ -10,12 +10,12 @@ interface Props {
   polygon: string;
 }
 
-export default function DrawNaverMap({ option, polygon }: Props) {
-  let polygonArray =
+export default function InputNaverMap({ option, polygon }: Props) {
+  const polygonArray =
     option === 'WKT'
       ? // )[공백],[공백](
         polygon.split(/\)\s*,\s*\(/).map((polygons) => {
-          let polygon = polygons.match(
+          const polygon = polygons.match(
             // 126.5 37.5, 126.7 37.6, ...의 형태
             /\d+\.*\d*\s+\d+\.*\d*\s*(,\s*\d+\.*\d*\d+\.*\d*\d+\.*\d*\s+\d+\.*\d*)*/
           );

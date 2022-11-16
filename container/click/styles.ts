@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
-import Flex from '../../components/Flex';
+import Flex from 'components/Flex';
 
 const fadeout = keyframes`
   from {
