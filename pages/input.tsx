@@ -1,12 +1,11 @@
 import React from 'react';
 import useStore from 'store/input';
 import Flex from 'components/Flex';
-import Nav from 'components/Nav';
 import Button from 'components/Button';
 import Option from 'components/Option';
-import { Wrapper } from 'container/input/styles';
+import Layout from 'container/Layout';
 import dynamic from 'next/dynamic';
-const InputNaverMap = dynamic(() => import('container/input/NaverMap'), {
+const InputNaverMap = dynamic(() => import('container/InputNaverMap'), {
   ssr: false,
 });
 
@@ -49,9 +48,8 @@ export default function InputContainer() {
     }
   };
   return (
-    <Wrapper direction='column'>
-      <Nav />
-      <div className='option-wrapper'>
+    <Layout className='option'>
+      <Flex className='wrapper' jc='left'>
         {option === WKT ? (
           <Option onClick={onClickWKT} text={WKT} isTarget />
         ) : (
@@ -62,29 +60,20 @@ export default function InputContainer() {
         ) : (
           <Option onClick={onClickJSON} text={JSON} />
         )}
-      </div>
+      </Flex>
       <form onSubmit={submitPolygon}>
-        {option === WKT ? (
-          <textarea
-            onChange={setInput}
-            onKeyDown={keyDownPolygon}
-            value={input}
-            placeholder={WKTPlaceholder}
-          />
-        ) : (
-          <textarea
-            onChange={setInput}
-            onKeyDown={keyDownPolygon}
-            value={input}
-            placeholder={JSONPlaceholder}
-          />
-        )}
+        <textarea
+          onChange={setInput}
+          onKeyDown={keyDownPolygon}
+          value={input}
+          placeholder={option === WKT ? WKTPlaceholder : JSONPlaceholder}
+        />
         <Flex direction='column'>
           <Button onClick={submitPolygon} text='그리기' submit />
           <Button onClick={resetPolygon} text='초기화' />
         </Flex>
       </form>
       <InputNaverMap polygon={polygon} option={option} />
-    </Wrapper>
+    </Layout>
   );
 }

@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import useStore from 'store/click';
 import Flex from 'components/Flex';
-import Nav from 'components/Nav';
+import Layout from 'container/Layout';
 import Button from 'components/Button';
-import { Wrapper } from 'container/click/styles';
 import dynamic from 'next/dynamic';
 
-const ClickNaverMap = dynamic(() => import('container/click/NaverMap'), {
+const ClickNaverMap = dynamic(() => import('container/ClickNaverMap'), {
   ssr: false,
 });
 
@@ -37,9 +36,8 @@ export default function ClickPolygon() {
     if (toastStatus) setTimeout(() => setToastStatus(false), 1000);
   }, [toastStatus]);
   return (
-    <Wrapper direction='column'>
-      <Nav />
-      <Flex className='input-wrapper'>
+    <Layout>
+      <Flex className='wrapper'>
         {/* TODO: textarea도 재사용성을 위해 component로 분리하고 싶은데 ref 참조가 styled component에 안 걸려서 우선 그대로 둠 */}
         <textarea
           readOnly
@@ -59,6 +57,6 @@ export default function ClickPolygon() {
         </Flex>
       </Flex>
       <ClickNaverMap />
-    </Wrapper>
+    </Layout>
   );
 }

@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
 import Flex from 'components/Flex';
 
+//TODO: 페이지마다 style 다르게 컴포넌트 분리
 const fadeout = keyframes`
   from {
     transform: translateY(0px);
@@ -12,11 +13,20 @@ const fadeout = keyframes`
     opacity: 0;
   }
 `;
-
-export const Wrapper = styled(Flex)`
-  .input-wrapper {
+export interface Props {
+  className?: string;
+}
+export const Wrapper = styled(Flex)<Props>`
+  .wrapper {
     width: 100%;
-    margin: 36px 0 10px 0;
+    margin: ${(props) => props.className !== 'option' && '36px 0 10px 0'};
+  }
+  form {
+    display: flex;
+    width: 100%;
+    margin: 10px;
+    justify-content: space-between;
+    align-items: center;
   }
   textarea {
     display: inline;
