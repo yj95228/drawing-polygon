@@ -1,6 +1,7 @@
 import React, { useState, Dispatch, SetStateAction } from 'react';
 import Modal from 'components/Modal';
 import Button from 'components/Button';
+import useStore from 'store/click';
 
 interface Props {
   onModalClick: Dispatch<SetStateAction<boolean>>;
@@ -12,7 +13,6 @@ export default function SearchModal({ onModalClick }: Props) {
     lnglat: '',
     latlng: '',
   });
-  const { lng, lat, lnglat, latlng } = inputs;
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
     if (name === 'lng' || name === 'lat') {
@@ -31,9 +31,11 @@ export default function SearchModal({ onModalClick }: Props) {
         [name]: value,
       });
     }
-    console.log(inputs);
   };
-  const onClick = () => console.log('asdf');
+  const { searchCoordinates } = useStore((state) => state);
+  const onClick = () => {
+    searchCoordinates(inputs);
+  };
   return (
     <Modal onModalClick={onModalClick}>
       <h1>좌표값으로 검색하기</h1>
@@ -42,29 +44,30 @@ export default function SearchModal({ onModalClick }: Props) {
         name='lat'
         placeholder='ex) 37.5666103'
         onChange={onChange}
-        value={lat}
+        value={inputs.lat}
       />
       <p>경도(lng)</p>
       <input
         name='lng'
         placeholder='ex) 126.9783882'
         onChange={onChange}
-        value={lng}
+        value={inputs.lng}
       />
       <p>lat, lng</p>
       <input
-        name='lnglat'
+        name='latlng'
         placeholder='ex) 37.5666103, 126.9783882'
         onChange={onChange}
-        value={lnglat}
+        value={inputs.latlng}
       />
       <p>lng, lat</p>
       <input
-        name='latlng'
+        name='lnglat'
         placeholder='ex) 126.9783882, 37.5666103'
         onChange={onChange}
-        value={latlng}
+        value={inputs.lnglat}
       />
+      {/* TODO: 검색 시 모달 닫히게 구현 필요 */}
       <Button onClick={onClick} text='검색' submit />
     </Modal>
   );

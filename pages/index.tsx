@@ -3,9 +3,8 @@ import useStore from 'store/click';
 import Flex from 'components/Flex';
 import Layout from 'container/Layout';
 import Button from 'components/Button';
-import Modal from 'components/Modal';
 import dynamic from 'next/dynamic';
-import SearchModal from 'container/ClickNaverMap/SearchModal';
+import SearchModal from 'container/SearchModal';
 
 const ClickNaverMap = dynamic(() => import('container/ClickNaverMap'), {
   ssr: false,
@@ -38,6 +37,7 @@ export default function ClickPolygon() {
     resetPolygon();
     setClose(false);
   };
+  const onModalClick = () => setModal(false);
   useEffect(() => {
     if (toast) setTimeout(() => setToast(false), 1000);
   }, [toast]);
@@ -61,7 +61,7 @@ export default function ClickPolygon() {
           <Button onClick={onClickSearchBtn} text='검색' submit />
           <Button onClick={onclickResetBtn} text='초기화' />
         </Flex>
-        {modal && <SearchModal onModalClick={() => setModal(false)} />}
+        {modal && <SearchModal onModalClick={onModalClick} />}
       </Flex>
       <ClickNaverMap />
     </Layout>

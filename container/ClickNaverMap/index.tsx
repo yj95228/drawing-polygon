@@ -25,7 +25,18 @@ declare global {
 }
 export default function ClickNaverMap() {
   const navermaps = window.naver.maps;
-  const { marker, clickPolygon } = useStore((state) => state);
+  const { marker, coordinates, clickPolygon } = useStore((state) => state);
+  const getKeyNotNull = (obj: { [key: string]: string }) =>
+    Object.keys(obj).filter((key) => obj[key] !== '');
+  let lat, lng;
+  if (getKeyNotNull(coordinates)[0] === 'latlng') {
+    [lat, lng] = coordinates['latlng'].split(',');
+  } else if (getKeyNotNull(coordinates)[0] === 'lnglat') {
+    [lng, lat] = coordinates['lnglat'].split(',');
+  } else {
+    lat = coordinates['lat'];
+    lng = coordinates['lng'];
+  }
   return (
     <RenderAfterNavermapsLoaded clientId={'jqe51ds7wm'}>
       <NaverMap
@@ -37,6 +48,14 @@ export default function ClickNaverMap() {
           marginRight: '20px',
         }}
         defaultZoom={15}
+        center={
+          getKeyNotNull(coordinates).length
+            ? {
+                lat: lat,
+                lng: lng,
+              }
+            : undefined
+        }
         onClick={clickPolygon}
         zoomControl={true}
         mapTypeControl={true}
