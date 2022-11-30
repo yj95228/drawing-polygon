@@ -1,4 +1,4 @@
-import React, { useState, Dispatch, SetStateAction } from 'react';
+import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
 import Modal from 'components/Modal';
 import Button from 'components/Button';
 import useStore from 'store/click';
@@ -8,26 +8,26 @@ interface Props {
 }
 export default function SearchModal({ onModalClick }: Props) {
   const [inputs, setInputs] = useState({
-    lng: '',
     lat: '',
-    lnglat: '',
+    lng: '',
     latlng: '',
+    lnglat: '',
   });
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
     if (name === 'lng' || name === 'lat') {
       setInputs({
         ...inputs,
-        lnglat: '',
         latlng: '',
+        lnglat: '',
         [name]: value,
       });
     } else {
       setInputs({
-        lng: '',
         lat: '',
-        lnglat: '',
+        lng: '',
         latlng: '',
+        lnglat: '',
         [name]: value,
       });
     }
@@ -35,10 +35,22 @@ export default function SearchModal({ onModalClick }: Props) {
   const { searchCoordinates } = useStore((state) => state);
   const onClick = () => {
     searchCoordinates(inputs);
+    onModalClick(false);
   };
+  useEffect(() => {
+    const escKeyModalClose = (e: { keyCode: number }) => {
+      if (e.keyCode === 27) {
+        onModalClick(false);
+      } else if (e.keyCode === 13) {
+        onClick();
+      }
+    };
+    window.addEventListener('keydown', escKeyModalClose);
+    return () => window.removeEventListener('keydown', escKeyModalClose);
+  }, [inputs]);
   return (
     <Modal onModalClick={onModalClick}>
-      <h1>좌표값으로 검색하기</h1>
+      <h1>좌표값으로 이동하기</h1>
       <p>위도(lat)</p>
       <input
         name='lat'
@@ -67,8 +79,7 @@ export default function SearchModal({ onModalClick }: Props) {
         onChange={onChange}
         value={inputs.lnglat}
       />
-      {/* TODO: 검색 시 모달 닫히게 구현 필요 */}
-      <Button onClick={onClick} text='검색' submit />
+      <Button onClick={onClick} text='이동' submit />
     </Modal>
   );
 }

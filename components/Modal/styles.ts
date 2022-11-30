@@ -20,11 +20,13 @@ export const ModalWrapper = styled(Flex)<Props>`
 export const ModalContent = styled(Flex)<StopEvent>`
   background: #fff;
   padding: 30px;
-  border-radius: 2rem;
+  border-radius: 1.5rem;
   h1 {
     width: 100%;
     text-align: left;
-    font-size: 24px;
+    font-size: 18px;
+    font-weight: 600;
+    color: royalblue;
     margin-bottom: 30px;
   }
   p {

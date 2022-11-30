@@ -22,7 +22,7 @@ interface Store {
 export const useStore = create<Store>((set) => ({
   polygon: '',
   marker: [],
-  coordinates: { lng: '', lat: '', lnglat: '', latlng: '' },
+  coordinates: { lat: '', lng: '', latlng: '', lnglat: '' },
   searchCoordinates: (inputs) => {
     set({ coordinates: inputs });
   },

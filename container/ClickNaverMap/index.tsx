@@ -29,6 +29,7 @@ export default function ClickNaverMap() {
   const getKeyNotNull = (obj: { [key: string]: string }) =>
     Object.keys(obj).filter((key) => obj[key] !== '');
   let lat, lng;
+  // TODO: , 말고 띄어쓰기로도 파싱할 수 있도록 정규표현식으로 변경
   if (getKeyNotNull(coordinates)[0] === 'latlng') {
     [lat, lng] = coordinates['latlng'].split(',');
   } else if (getKeyNotNull(coordinates)[0] === 'lnglat') {

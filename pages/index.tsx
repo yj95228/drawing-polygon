@@ -11,13 +11,16 @@ const ClickNaverMap = dynamic(() => import('container/ClickNaverMap'), {
 });
 
 export default function ClickPolygon() {
-  const { polygon, closePolygon, resetPolygon } = useStore((state) => state);
+  const { polygon, closePolygon, resetPolygon, searchCoordinates } = useStore(
+    (state) => state
+  );
   const [close, setClose] = useState(false);
   const [toast, setToast] = useState(false);
   const [modal, setModal] = useState(false);
   const result = useRef<HTMLTextAreaElement>(null);
   const toastRef = useRef<HTMLDivElement>(null);
   const onClickSearchBtn = () => {
+    searchCoordinates({ lng: '', lat: '', lnglat: '', latlng: '' });
     setModal(true);
   };
   const onClickClosePolygon = () =>
@@ -58,7 +61,7 @@ export default function ClickPolygon() {
           </div>
         )}
         <Flex direction='column'>
-          <Button onClick={onClickSearchBtn} text='검색' submit />
+          <Button onClick={onClickSearchBtn} text='이동' submit />
           <Button onClick={onclickResetBtn} text='초기화' />
         </Flex>
         {modal && <SearchModal onModalClick={onModalClick} />}
